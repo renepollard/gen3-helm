@@ -58,33 +58,58 @@ spec:
             # see https://github.com/npm/cli/issues/3163
             - name: NPM_CONFIG_UPDATE_NOTIFIER
               value: "false"
+
+            {{- with .Values.portalApp  }}
             - name: APP
-              value: {{ .Values.portalApp | quote }}
+              value: {{ . }}
+            {{- end }}
             - name: GEN3_BUNDLE
               value: ""
+            {{- with .Values.logoutInactiveUsers  }}
             - name: LOGOUT_INACTIVE_USERS
-              value: {{ .Values.logoutInactiveUsers | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.workspaceTimeoutMinutes  }}
             - name: WORKSPACE_TIMEOUT_IN_MINUTES
-              value: {{ .Values.workspaceTimeoutMinutes }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.tierAccessLevel  }}
             - name: TIER_ACCESS_LEVEL
               ## acceptable values for `tier_access_level` are: `libre`, `regular` and `private`. If omitted, by default common will be treated as `private`
-              value: {{ .Values.tierAccessLevel | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.tierAccessLimit  }}
             - name: TIER_ACCESS_LIMIT
-              value: {{ .Values.tierAccessLimit }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.fenceUrl  }}
             - name: FENCE_URL
-              value: {{ .Values.fenceUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.indexdUrl  }}
             - name: INDEXD_URL
-              value: {{ .Values.indexdUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.workspaceUrl  }}
             - name: WORKSPACE_URL
-              value: {{ .Values.workspaceUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.manifestServiceUrl  }}
             - name: MANIFEST_SERVICE_URL
-              value: {{ .Values.manifestServiceUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.wtsUrl  }}
             - name: WTS_URL
-              value: {{ .Values.wtsUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.privacyPolicyUrl  }}
             - name: PRIVACY_POLICY_URL
-              value: {{ .Values.privacyPolicyUrl | quote }}
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.mapboxApiToken  }}
             - name: MAPBOX_API_TOKEN
-              value: {{ .Values.mapboxApiToken | quote }}
+              value: {{ . }}
+            {{- end }}
 
             {{- with .Values.datadogApplicationId  }}      
             - name: DATADOG_APPLICATION_ID
