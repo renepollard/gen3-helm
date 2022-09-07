@@ -61,77 +61,31 @@ spec:
             - name: APP
               value: {{ .Values.portalApp | quote }}
             - name: GEN3_BUNDLE
-              # optional: true
               value: ""
             - name: LOGOUT_INACTIVE_USERS
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: logout_inactive_users
-                  optional: true
+              value: {{ .Values.logoutInactiveUsers | quote }}
             - name: WORKSPACE_TIMEOUT_IN_MINUTES
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: workspace_timeout_in_minutes
-                  optional: true
+              value: {{ .Values.workspaceTimeoutMinutes }}
             - name: TIER_ACCESS_LEVEL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  # acceptable values for `tier_access_level` are: `libre`, `regular` and `private`. If omitted, by default common will be treated as `private`
-                  key: tier_access_level
-                  # for now making it optional so won't break anything
-                  optional: true
+              ## acceptable values for `tier_access_level` are: `libre`, `regular` and `private`. If omitted, by default common will be treated as `private`
+              value: {{ .Values.tierAccessLevel | quote }}
             - name: TIER_ACCESS_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: tier_access_limit
-                  optional: true
+              value: {{ .Values.tierAccessLimit }}
             - name: FENCE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: fence_url
-                  optional: true
+              value: {{ .Values.fenceUrl | quote }}
             - name: INDEXD_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: indexd_url
-                  optional: true
+              value: {{ .Values.indexdUrl | quote }}
             - name: WORKSPACE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: workspace_url
-                  optional: true
+              value: {{ .Values.workspaceUrl | quote }}
             - name: MANIFEST_SERVICE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: manifest_service_url
-                  optional: true
+              value: {{ .Values.manifestServiceUrl | quote }}
             - name: WTS_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: wts_url
-                  optional: true
+              value: {{ .Values.wtsUrl | quote }}
             - name: PRIVACY_POLICY_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: manifest-global
-                  key: privacy_policy_url
-                  optional: true
+              value: {{ .Values.privacyPolicyUrl | quote }}
             - name: MAPBOX_API_TOKEN
-              # Optional token for mapbox api
-              valueFrom:
-                configMapKeyRef:
-                  name: global
-                  key: mapbox_token
-                  optional: true
+              value: {{ .Values.mapboxApiToken | quote }}
+
             {{- with .Values.datadogApplicationId  }}      
             - name: DATADOG_APPLICATION_ID
               # Optional client token for Datadog

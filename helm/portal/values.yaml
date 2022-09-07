@@ -133,6 +133,18 @@ resources:
     memory: 4096Mi
 
 portalApp: "dev"
+tierAccessLevel: "libre"
+tierAccessLimit: 50
+logoutInactiveUsers: ""
+workspaceTimeoutMinutes: ""
+tierAccessLimit: ""
+fenceUrl: ""
+indexdUrl: ""
+workspaceUrl: ""
+manifestServiceUrl: ""
+wtsUrl: ""
+privacyPolicyUrl: ""
+mapboxApiToken: ""
 
 env:
 
