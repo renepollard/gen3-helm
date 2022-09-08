@@ -92,3 +92,8 @@ revproxyElb:
   targetPortHTTP: 80
 
   gen3SecretsFolder: Gen3Secrets
+
+indexd:
+  user: TEST_USER
+  password: FAKE_PASSWORD
+  base64Authz: FAKE_AUTHZ
